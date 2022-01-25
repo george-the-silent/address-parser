@@ -7,7 +7,8 @@ Send POST request to http://\<host>\:5000/parse-address
 Request body example:
 ```json
 {
-  "address" : "Fialova 17 Pardubice 53009"
+  "address" : "Fialova 17 Pardubice 53009",
+  "probability" : true
 }
 ```
 
@@ -27,34 +28,26 @@ Response body example:
         "EOS": null
     },
     "parsed_address_components": [
-        [
-            "fialova",
-            [
-                "StreetName",
-                1.0
-            ]
-        ],
-        [
-            "17",
-            [
-                "StreetNumber",
-                0.9995
-            ]
-        ],
-        [
-            "pardubice",
-            [
-                "Municipality",
-                0.9978
-            ]
-        ],
-        [
-            "53009",
-            [
-                "PostalCode",
-                0.9997
-            ]
-        ]
+        {
+            "name": "StreetName",
+            "value": "fialova",
+            "probability": 1.0
+        },
+        {
+            "name": "StreetNumber",
+            "value": "17",
+            "probability": 0.9995
+        },
+        {
+            "name": "Municipality",
+            "value": "pardubice",
+            "probability": 0.9978
+        },
+        {
+            "name": "PostalCode",
+            "value": "53009",
+            "probability": 0.9997
+        }
     ]
 }
 ```
